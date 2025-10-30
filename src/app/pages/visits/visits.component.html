@@ -1,0 +1,13 @@
+<table mat-table [dataSource]="data" class="mat-elevation-z1">
+  <ng-container matColumnDef="data"><th mat-header-cell *matHeaderCellDef>Data</th><td mat-cell *matCellDef="let v">{{ v.data | date:'dd/MM/yyyy' }}</td></ng-container>
+  <ng-container matColumnDef="visitante"><th>Visitante</th><td mat-cell *matCellDef="let v">{{ v.visitanteNome }}</td></ng-container>
+  <ng-container matColumnDef="anfitriao"><th>Anfitrião</th><td mat-cell *matCellDef="let v">{{ v.anfitriao }}</td></ng-container>
+  <ng-container matColumnDef="departamento"><th>Departamento</th><td mat-cell *matCellDef="let v">{{ v.departamento }}</td></ng-container>
+  <ng-container matColumnDef="motivo"><th>Motivo</th><td mat-cell *matCellDef="let v">{{ v.motivo }}</td></ng-container>
+  <ng-container matColumnDef="entrada"><th>Entrada</th><td mat-cell *matCellDef="let v">{{ v.entrada }}</td></ng-container>
+  <ng-container matColumnDef="saida"><th>Saída</th><td mat-cell *matCellDef="let v">{{ v.saida || '—' }}</td></ng-container>
+  <ng-container matColumnDef="duracao"><th>Duração</th><td mat-cell *matCellDef="let v">{{ formatDuracao(v.duracaoMin) }}</td></ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="cols"></tr>
+  <tr mat-row *matRowDef="let row; columns: cols;"></tr>
+</table>

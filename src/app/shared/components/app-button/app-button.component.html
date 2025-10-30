@@ -1,0 +1,10 @@
+<button
+  [attr.type]="type"
+  [disabled]="disabled"
+  [ngClass]="{'mr': true}"
+  [mat-button]="!flat"
+  [mat-flat-button]="flat"
+  [color]="color">
+  <mat-icon *ngIf="icon" class="mr-4">{{icon}}</mat-icon>
+  {{ label }}
+</button>

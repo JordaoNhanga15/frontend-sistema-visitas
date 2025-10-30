@@ -1,8 +1,23 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@core/*": ["app/core/*"],
+      "@shared/*": ["app/shared/*"],
+      "@providers/*": ["app/core/providers/*"],
+      "@services/*": ["app/core/services/*"],
+      "@models/*": ["app/core/models/*"],
+      "@validators/*": ["app/core/validators/*"],
+      "@environments/*": ["environments/*"],
+      "@features-modules/*": ["app/features-modules/*"],
+      "@events/*": ["app/core/events/*"],
+      "@mappers/*": ["app/core/mappers/*"],
+      "@dto/*": ["app/core/dto/*"],
+      "@mock/*": ["app/core/mock/*"]
+    },
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
@@ -11,12 +26,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
   }
 }

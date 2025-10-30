@@ -1,17 +1,25 @@
 {
-  "extends": "../tslint.json",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
+  "rulesDirectory": ["codelyzer"],
   "rules": {
-    "directive-selector": [
-      true,
-      "attribute",
-      "app",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "app",
-      "kebab-case"
-    ]
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+    "member-access": [true, "no-public"],
+    "no-var-requires": true,
+    "no-implicit-dependencies": [true, "dev"],
+    "typedef": [true, "call-signature", "parameter", "property-declaration", "arrow-parameter"],
+    "interface-name": [true, "never-prefix"],
+    "object-literal-sort-keys": false,
+    "max-classes-per-file": [true, 1],
+    "prefer-const": true,
+    "await-promise": [true, "Bluebird", "Promise"],
+    "directive-selector": [true, "attribute", "app", "camelCase"],
+    "component-selector": [true, "element", "app", "kebab-case"],
+    "component-class-suffix": [true, "Component"],
+    "directive-class-suffix": [true, "Directive"],
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true
   }
 }

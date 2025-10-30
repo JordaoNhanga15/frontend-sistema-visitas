@@ -1,0 +1,27 @@
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #snav mode="side" opened>
+    <div class="brand">
+      <mat-icon>domain</mat-icon>
+      <span>MINFIN • IMOB</span>
+      <small>Controlo de Presença</small>
+    </div>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard"><mat-icon>dashboard</mat-icon><span>Dashboard</span></a>
+      <a mat-list-item routerLink="/visitas"><mat-icon>how_to_reg</mat-icon><span>Visitas</span></a>
+      <a mat-list-item routerLink="/visitantes"><mat-icon>people</mat-icon><span>Visitantes</span></a>
+      <a mat-list-item routerLink="/utilizadores"><mat-icon>group</mat-icon><span>Utilizadores</span></a>
+      <a mat-list-item (click)="logout()"><mat-icon>exit_to_app</mat-icon><span>Sair</span></a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <span class="fx"></span>
+      <mat-icon>account_circle</mat-icon>
+    </mat-toolbar>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

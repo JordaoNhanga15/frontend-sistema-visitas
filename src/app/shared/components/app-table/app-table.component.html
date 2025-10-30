@@ -1,0 +1,28 @@
+<table class="mat-elevation-z1 w-100 table">
+  <thead>
+    <tr>
+      <th *ngFor="let c of columns" [style.width]="c.width" (click)="setSort(c)" class="th">
+        {{ c.header }}
+        <span class="sort" *ngIf="active === c.key">
+          {{ direction === 'asc' ? '▲' : (direction==='desc' ? '▼' : '') }}
+        </span>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let row of data" [class.clickable]="clickable" (click)="clickable && rowClick.emit(row)">
+      <td *ngFor="let c of columns">
+        <ng-container [ngSwitch]="c.type">
+          <span *ngSwitchCase="'date'">{{ (c.cell ? c.cell(row) : row[c.key]) | date:c.format || 'dd/MM/yyyy' }}</span>
+          <span *ngSwitchDefault>
+            {{ c.cell ? c.cell(row) : row[c.key] }}
+          </span>
+        </ng-container>
+      </td>
+    </tr>
+    <tr *ngIf="!data || !data.length">
+      <td [attr.colspan]="columns.length" class="empty">Sem registos.</td>
+    </tr>
+  </tbody>
+</table>

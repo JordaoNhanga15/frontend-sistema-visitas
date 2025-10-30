@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-title>Criar Conta</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="submit()">
+      <mat-form-field class="w-100"><input matInput placeholder="Nome" [(ngModel)]="nome" name="nome"></mat-form-field>
+      <mat-form-field class="w-100"><input matInput placeholder="Username" [(ngModel)]="u" name="u"></mat-form-field>
+      <mat-form-field class="w-100"><input matInput placeholder="Palavra-passe" [(ngModel)]="p" name="p" type="password"></mat-form-field>
+      <button mat-raised-button color="primary">Registar</button>
+      <a mat-button routerLink="/login">Já tenho conta</a>
+    </form>
+  </mat-card-content>
+</mat-card>
