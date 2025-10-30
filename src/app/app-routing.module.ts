@@ -18,9 +18,6 @@ const routes: Routes = [
     path: '',
     loadChildren: './layout/layout.module#LayoutModule'
   },
-
-  //{ path: 'login', component: LoginComponent },
-  //{ path: 'criar-conta', component: RegisterComponent },
   {
     path: '',
     component: ShellComponent,

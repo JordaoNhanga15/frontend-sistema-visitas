@@ -4,12 +4,15 @@
   "scripts": {
     "ng": "ng",
     "g": "ng generate",
+    "prestart": "npm run lint",
     "start": "ng serve",
+    "prebuild": "npm run lint",
     "build": "ng build",
     "test": "ng test",
     "lint": "tslint -p tsconfig.json -c tslint.json 'src/**/*.ts' --format stylish",
     "e2e": "ng e2e",
-    "format": "prettier --write \"src/**/*.{ts,scss,html}\""
+    "format": "prettier --write \"src/**/*.{ts,scss,html}\"",
+    "prepush": "npm run lint"
   },
   "private": true,
   "dependencies": {

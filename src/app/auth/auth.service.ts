@@ -27,6 +27,7 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
+      if (!username || !password) return false;
     const ok = this.read().some(u => u.username === username && u.password === password);
     if (!ok) throw new Error('Credenciais inválidas');
     localStorage.setItem('token', btoa(username + ':' + Date.now()));

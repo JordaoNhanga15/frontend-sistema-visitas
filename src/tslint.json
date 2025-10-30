@@ -8,6 +8,7 @@
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "member-access": [true, "no-public"],
     "no-var-requires": true,
+    "no-use-before-declare": false,
     "no-implicit-dependencies": [true, "dev"],
     "typedef": [true, "call-signature", "parameter", "property-declaration", "arrow-parameter"],
     "interface-name": [true, "never-prefix"],
