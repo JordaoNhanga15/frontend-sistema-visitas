@@ -29,7 +29,7 @@ export class VisitsComponent {
   ];
 
   filters: FilterField[] = [
-    { key: 'q', label: 'Pesquisar', type: 'text', placeholder: 'nome, empresa, doc...' },
+    { key: 'q', label: 'Pesquisars', type: 'text', placeholder: 'nome, empresa, doc...' },
     { key: 'departamento', label: 'Departamento', type: 'select',
       options: [{label:'Finanças', value:'Finanças'}, {label:'RH', value:'Recursos Humanos'}, {label:'Administração', value:'Administração'}] },
     { key: 'data', label: 'Data', type: 'date' }
