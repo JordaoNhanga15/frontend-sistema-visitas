@@ -2,9 +2,20 @@
   [attr.type]="type"
   [disabled]="disabled"
   [ngClass]="{'mr': true}"
-  [mat-button]="!flat"
-  [mat-flat-button]="flat"
+  *ngIf="!flat"
+  mat-button
   [color]="color">
-  <mat-icon *ngIf="icon" class="mr-4">{{icon}}</mat-icon>
+  <mat-icon *ngIf="icon" class="mr-4">{{ icon }}</mat-icon>
+  {{ label }}
+</button>
+
+<button
+  [attr.type]="type"
+  [disabled]="disabled"
+  [ngClass]="{'mr': true}"
+  *ngIf="flat"
+  mat-flat-button
+  [color]="color">
+  <mat-icon *ngIf="icon" class="mr-4">{{ icon }}</mat-icon>
   {{ label }}
 </button>

@@ -1,3 +1,4 @@
+// src/app/shared/material.module.ts
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -21,5 +22,8 @@ const modules = [
   MatSelectModule, MatBadgeModule, MatChipsModule
 ];
 
-@NgModule({ imports: modules, exports: modules })
+@NgModule({
+  imports: modules,
+  exports: modules
+})
 export class MaterialModule {}

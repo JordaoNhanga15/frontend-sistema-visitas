@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Material base que os teus componentes usam
-MaterialModule
 
 // componentes shared
 import { AppListComponent } from './components/app-list/app-list.component';
