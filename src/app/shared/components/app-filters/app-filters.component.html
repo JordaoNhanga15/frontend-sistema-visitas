@@ -1,20 +1,22 @@
-<form class="filters" (ngSubmit)="onApply()">
+<form [formGroup]="form" class="filters">
   <ng-container *ngFor="let f of fields">
-    <mat-form-field class="field">
-      <mat-label>{{f.label}}</mat-label>
+    <mat-form-field>
+      <mat-label>{{ f.label }}</mat-label>
 
-      <input *ngIf="f.type==='text'" matInput [formControlName]="f.key" [placeholder]="f.placeholder || ''">
+      <input *ngIf="f.type === 'text'" matInput [formControlName]="f.key" [placeholder]="f.placeholder || ''">
 
-      <input *ngIf="f.type==='date'" matInput [formControlName]="f.key" placeholder="dd/mm/aaaa" type="date">
+      <input *ngIf="f.type === 'date'" matInput [formControlName]="f.key" type="date">
 
-      <mat-select *ngIf="f.type==='select'" [formControlName]="f.key" [placeholder]="f.placeholder || ''">
-        <mat-option [value]="null">—</mat-option>
-        <mat-option *ngFor="let o of f.options" [value]="o.value">{{o.label}}</mat-option>
+      <mat-select *ngIf="f.type === 'select'" [formControlName]="f.key">
+        <mat-option *ngFor="let o of f.options" [value]="o.value">
+          {{ o.label }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </ng-container>
 
-  <span class="grow"></span>
-  <app-button icon="filter_list" label="Aplicar" type="submit" flat="true"></app-button>
-  <app-button icon="refresh" label="Limpar" (click)="onReset()" flat="true"></app-button>
+  <div class="actions">
+    <button mat-button type="button" (click)="reset()">Limpar</button>
+    <button mat-flat-button color="primary" type="button" (click)="apply()">Aplicar</button>
+  </div>
 </form>

@@ -12,14 +12,13 @@ import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () =>
-      import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: './auth/auth.module#AuthModule'
   },
   {
     path: '',
-    loadChildren: () =>
-      import('./layout/layout.module').then(m => m.LayoutModule)
+    loadChildren: './layout/layout.module#LayoutModule'
   },
+
   //{ path: 'login', component: LoginComponent },
   //{ path: 'criar-conta', component: RegisterComponent },
   {
@@ -38,5 +37,5 @@ const routes: Routes = [
 ];
 
 @NgModule({ imports: [RouterModule.forRoot(routes)], exports: [RouterModule] })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
 

@@ -6,6 +6,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { VisitsComponent } from './visits/visits.component';
 import { VisitorsComponent } from './visitors/visitors.component';
 import { UsersComponent } from './users/users.component';
+import { MaterialModule } from '@app/material.module';
+import { AppListComponent } from '@app/shared/components';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,9 @@ import { UsersComponent } from './users/users.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    MaterialModule,
+    SharedModule
   ]
 })
 export class PagesModule {}
