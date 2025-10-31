@@ -1,13 +1,18 @@
+
+
+import {
+    HttpClient,
+    HttpHeaders,
+    HttpParams,
+    HttpEvent,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { NotificationService } from '@app/core/services/notification.service';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ApiService {
     constructor(
         private http: HttpClient,
@@ -19,22 +24,21 @@ export class ApiService {
             'Content-Type': 'application/json',
             Accept: 'application/json',
         };
-
         return new HttpHeaders(headersConfig);
     }
 
     private handleError(error: any): Observable<never> {
-        // aqui podes melhorar de acordo com tua API
         const msg =
-            error?.error?.message ||
-            error?.message ||
-            'Ocorreu um erro ao comunicar com o servidor.';
+            error ? .error ? .message ||
+                error ? .message ||
+            'Ocorreu um erro ao comunicar com o servidor.'  ;
         this.notifier.error(msg);
         return throwError(() => error);
     }
 
     private getBaseUrl(path: string, forceSecondary = false): string {
-        return environment.url
+        // se no teu environment for só 1 url
+        return environment.url;
     }
 
     get<T>(
@@ -52,23 +56,41 @@ export class ApiService {
             .pipe(catchError(err => this.handleError(err)));
     }
 
+    // --- POST overloads ---
+
+    post<T>(
+        path: string,
+        body?: object,
+        options?: any,
+        forceSecondary?: boolean,
+        showSuccess?: boolean,
+    ): Observable<T>;
+
+    post<T>(
+        path: string,
+        body: object,
+        options: { observe: 'events'; reportProgress?: boolean } & any,
+        forceSecondary?: boolean,
+        showSuccess?: boolean,
+    ): Observable<HttpEvent<T>>;
+
     post<T>(
         path: string,
         body: object = {},
         options?: any,
         forceSecondary = false,
         showSuccess = true,
-    ): Observable<T> {
+    ): Observable<any> {
         const isFormData = body instanceof FormData;
 
         return this.http
-            .post<T>(`${this.getBaseUrl(path, forceSecondary)}${path}`, body, {
+            .post<any>(`${this.getBaseUrl(path, forceSecondary)}${path}`, body, {
                 ...options,
                 headers: isFormData ? undefined : this.setHeaders(),
             })
             .pipe(
                 tap(() => {
-                    if (showSuccess) {
+                    if (showSuccess && !(options && options.observe === 'events')) {
                         this.notifier.success('Registo efetuado com sucesso.');
                     }
                 }),
@@ -76,6 +98,7 @@ export class ApiService {
             );
     }
 
+    // --- PUT (podes fazer igual) ---
     put<T>(
         path: string,
         body: object = {},
@@ -95,26 +118,6 @@ export class ApiService {
                 tap(() => {
                     if (showSuccess) {
                         this.notifier.success('Alterações gravadas com sucesso.');
-                    }
-                }),
-                catchError(err => this.handleError(err)),
-            );
-    }
-
-    patch<T>(
-        path: string,
-        body: object = {},
-        forceSecondary = false,
-        showSuccess = true,
-    ): Observable<T> {
-        return this.http
-            .patch<T>(`${this.getBaseUrl(path, forceSecondary)}${path}`, body, {
-                headers: this.setHeaders(),
-            })
-            .pipe(
-                tap(() => {
-                    if (showSuccess) {
-                        this.notifier.success('Registo atualizado.');
                     }
                 }),
                 catchError(err => this.handleError(err)),
@@ -157,3 +160,5 @@ export class ApiService {
             .pipe(catchError(err => this.handleError(err)));
     }
 }
+
+
