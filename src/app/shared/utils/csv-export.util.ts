@@ -1,10 +1,12 @@
-export function exportToCsv(filename: string, rows: any[]) {
-  if (!rows || !rows.length) return;
+export function exportToCsv(filename: string, rows: any[]): void {
+  if (!rows || !rows.length) {
+    return;
+  }
 
   const headers = Object.keys(rows[0]);
   const csv = [
     headers.join(';'),
-    ...rows.map(r => headers.map(h => sanitize(r[h])).join(';'))
+    ...rows.map(r => headers.map(h => sanitize(r[h])).join(';')),
   ].join('\n');
 
   const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -16,8 +18,10 @@ export function exportToCsv(filename: string, rows: any[]) {
   URL.revokeObjectURL(url);
 }
 
-function sanitize(v: any) {
-  if (v == null) return '';
+function sanitize(v: any): string {
+  if (v == null) {
+    return '';
+  }
   const s = String(v);
   return /[;\n"]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }

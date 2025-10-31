@@ -13,26 +13,40 @@ export class AuthService {
   private read(): User[] {
     return JSON.parse(localStorage.getItem(this.KEY) || '[]');
   }
-  private write(list: User[]) {
+
+  private write(list: User[]): void {
     localStorage.setItem(this.KEY, JSON.stringify(list));
   }
 
-  register(user: User) {
+  register(user: User): boolean {
     const list = this.read();
-    if (list.some(u => u.username === user.username))
+    if (list.some(u => u.username === user.username)) {
       throw new Error('Utilizador já existe');
+    }
+
     list.push(user);
     this.write(list);
     return true;
   }
 
-  login(username: string, password: string) {
-      if (!username || !password) return false;
-    const ok = this.read().some(u => u.username === username && u.password === password);
-    if (!ok) throw new Error('Credenciais inválidas');
+  login(username: string, password: string): boolean {
+    if (!username || !password) {
+      return false;
+    }
+
+    const ok = this.read().some(
+      u => u.username === username && u.password === password,
+    );
+
+    if (!ok) {
+      throw new Error('Credenciais inválidas');
+    }
+
     localStorage.setItem('token', btoa(username + ':' + Date.now()));
     return true;
   }
 
-  logout() { localStorage.removeItem('token'); }
+  logout(): void {
+    localStorage.removeItem('token');
+  }
 }

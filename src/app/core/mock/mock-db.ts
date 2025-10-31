@@ -7,3 +7,4 @@ export const MockDB = {
   visits: VISITS_MOCK,
   users: USERS_MOCK
 };
+

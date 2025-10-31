@@ -16,11 +16,21 @@ export class AppTableComponent<T = any> {
   active = '';
   direction: 'asc'|'desc'|'' = '';
 
-  setSort(col: TableColumn) {
-    if (!col.key) return;
-    if (this.active !== col.key) { this.active = col.key; this.direction = 'asc'; }
-    else if (this.direction === 'asc') this.direction = 'desc';
-    else this.direction = '';
-    this.sort.emit({ active: this.active, direction: this.direction });
+setSort(col: TableColumn): void {
+  if (!col.key) {
+    return;
   }
+
+  if (this.active !== col.key) {
+    this.active = col.key;
+    this.direction = 'asc';
+  } else if (this.direction === 'asc') {
+    this.direction = 'desc';
+  } else {
+    this.direction = '';
+  }
+
+  this.sort.emit({ active: this.active, direction: this.direction });
+}
+
 }

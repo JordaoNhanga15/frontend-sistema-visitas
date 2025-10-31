@@ -18,11 +18,14 @@ export class AppPaginationComponent {
     return this.total ? Math.ceil(this.total / this.pageSize) : 1;
   }
 
-  go(i: number) {
-    if (i < 0 || i >= this.pages) return;
-    this.pageIndex = i;
-    this.emit();
+ go(i: number): void {
+  if (i < 0 || i >= this.pages) {
+    return;
   }
+  this.pageIndex = i;
+  this.emit();
+}
+
 
   setSize(s: number) {
     this.pageSize = +s;
