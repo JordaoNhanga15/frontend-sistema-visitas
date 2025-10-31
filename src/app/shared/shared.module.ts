@@ -16,6 +16,7 @@ import { MaterialModule } from '@app/material.module';
 
 import { AppSidebarComponent } from './components/app-sidebar/app-sidebar.component';
 import { AppTopbarComponent } from './components/app-topbar/app-topbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AppTopbarComponent } from './components/app-topbar/app-topbar.component
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    RouterModule
   ],
   exports: [
     // exporta para os outros módulos poderem usar
@@ -48,6 +50,7 @@ import { AppTopbarComponent } from './components/app-topbar/app-topbar.component
     AppPaginationComponent,
     AppExportComponent,
     AppButtonComponent,
+    RouterModule
   ]
 })
 export class SharedModule { }
