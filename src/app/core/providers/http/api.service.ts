@@ -1,5 +1,3 @@
-
-
 import {
     HttpClient,
     HttpHeaders,
@@ -28,16 +26,17 @@ export class ApiService {
     }
 
     private handleError(error: any): Observable<never> {
+        // sem optional chaining porque TS 3.2 não tem
         const msg =
-            error ? .error ? .message ||
-                error ? .message ||
-            'Ocorreu um erro ao comunicar com o servidor.'  ;
+            (error && error.error && error.error.message) ||
+            (error && error.message) ||
+            'Ocorreu um erro ao comunicar com o servidor.';
         this.notifier.error(msg);
         return throwError(() => error);
     }
 
     private getBaseUrl(path: string, forceSecondary = false): string {
-        // se no teu environment for só 1 url
+        // neste projeto estás a usar só 1 url
         return environment.url;
     }
 
@@ -90,6 +89,7 @@ export class ApiService {
             })
             .pipe(
                 tap(() => {
+                    // se for upload (observe: 'events'), não mostrar snackbar
                     if (showSuccess && !(options && options.observe === 'events')) {
                         this.notifier.success('Registo efetuado com sucesso.');
                     }
@@ -98,7 +98,6 @@ export class ApiService {
             );
     }
 
-    // --- PUT (podes fazer igual) ---
     put<T>(
         path: string,
         body: object = {},
@@ -160,5 +159,3 @@ export class ApiService {
             .pipe(catchError(err => this.handleError(err)));
     }
 }
-
-
