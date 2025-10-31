@@ -23,9 +23,9 @@ export class AppListComponent<T = any, F = any> implements OnInit {
   ngOnInit() { this.fetch(); }
 
   onApplyFilters(f: any) { this.currentFilters = f; this.pageIndex = 0; this.fetch(); }
-  
+
   onResetFilters() { this.currentFilters = {}; this.pageIndex = 0; this.fetch(); }
-  
+
   onSort(s: Sort) { this.currentSort = s; this.fetch(); }
 
   onPage(e: { pageIndex: number; pageSize: number }): void {

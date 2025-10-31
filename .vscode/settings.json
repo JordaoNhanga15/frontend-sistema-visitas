@@ -1,0 +1,15 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "typescript.tsserver.pluginPaths": ["typescript-tslint-plugin"],
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.tslint": true
+  },
+
+  "files.exclude": {
+    "**/.git": false
+  }
+}
