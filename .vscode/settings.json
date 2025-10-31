@@ -11,5 +11,8 @@
 
   "files.exclude": {
     "**/.git": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }

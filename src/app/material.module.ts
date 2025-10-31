@@ -14,7 +14,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
-
 const modules = [
   MatToolbarModule, MatSidenavModule, MatListModule, MatIconModule,
   MatButtonModule, MatCardModule, MatMenuModule, MatTableModule,
@@ -26,4 +25,4 @@ const modules = [
   imports: modules,
   exports: modules
 })
-export class MaterialModule {}
+export class MaterialModule { }
