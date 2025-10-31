@@ -1,9 +1,15 @@
 <aside class="sidebar">
   <div class="brand">
-    <span class="logo-box">□</span>
+    <div class="logo-box">
+      <img
+        src="assets/minfin-logo-branco.png"
+        alt="MINFIN"
+        class="logo-img"
+      />
+    </div>
     <div class="brand-text">
-      <span class="brand-title">MINFIN</span>
-      <small>Controlo de Presença</small>
+      <!--<span class="brand-title">MINFIN</span>-->
+      <small>Controlo de Visitas</small>
     </div>
   </div>
 
@@ -20,10 +26,15 @@
     <ng-container *ngFor="let item of nav">
       <ng-container *ngIf="item.children && item.children.length; else single">
         <button class="nav-item has-children" (click)="toggleGroup(item.label)">
-          <mat-icon>{{ item.icon }}</mat-icon>
-          <span>{{ item.label }}</span>
-          <mat-icon class="chevron" [class.open]="opened[item.label]">expand_more</mat-icon>
+          <span class="left">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.label }}</span>
+          </span>
+          <mat-icon class="chevron" [class.open]="opened[item.label]">
+            expand_more
+          </mat-icon>
         </button>
+
         <div class="sub" *ngIf="opened[item.label]">
           <a
             *ngFor="let c of item.children"
@@ -35,6 +46,7 @@
           </a>
         </div>
       </ng-container>
+
       <ng-template #single>
         <a
           class="nav-item"

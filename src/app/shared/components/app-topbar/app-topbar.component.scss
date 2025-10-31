@@ -92,6 +92,12 @@
   }
 }
 
+.right button[mat-stroked-button],
+.right button[mat-flat-button] {
+  font-weight: 600;
+}
+
+
 @media (max-width: 1024px) {
   .only-mobile { display: inline-flex; }
   .page-title p { display: none; }
