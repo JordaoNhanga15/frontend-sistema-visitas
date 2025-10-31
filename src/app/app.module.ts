@@ -8,7 +8,6 @@ import { MaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { PagesModule } from './pages/pages.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -16,7 +15,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent, LoginComponent, RegisterComponent
   ],
-  imports: [BrowserModule, PagesModule, LayoutModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, MaterialModule, SharedModule],
+  imports: [BrowserModule, LayoutModule, BrowserAnimationsModule, FormsModule, AppRoutingModule, MaterialModule, SharedModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
