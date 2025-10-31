@@ -1,0 +1,30 @@
+<header class="topbar">
+  <div class="left">
+    <button mat-icon-button class="only-mobile" (click)="menu.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="page-title">
+      <h1>Dashboard</h1>
+      <p>Visão geral do sistema de controlo de presença</p>
+    </div>
+  </div>
+
+  <div class="right">
+    <button mat-icon-button class="notif">
+      <mat-icon>notifications_none</mat-icon>
+      <span class="dot" *ngIf="notif > 0"></span>
+    </button>
+
+    <div class="user">
+      <div class="avatar">JO</div>
+      <span class="name">{{ userName }}</span>
+      <mat-icon>expand_more</mat-icon>
+      <div class="menu">
+        <button mat-button (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Sair
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

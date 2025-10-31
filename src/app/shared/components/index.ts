@@ -5,3 +5,6 @@ export * from './app-pagination/app-pagination.component';
 export * from './app-export/app-export.component';
 export * from './app-filters/app-filters.component';
 export * from './app-list/app-list.component';
+export * from './app-sidebar/app-sidebar.component';
+export * from './app-topbar/app-topbar.component';
+

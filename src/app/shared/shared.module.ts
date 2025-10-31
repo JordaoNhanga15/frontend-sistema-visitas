@@ -14,6 +14,9 @@ import { AppExportComponent } from './components/app-export/app-export.component
 import { AppButtonComponent } from './components/app-button/app-button.component';
 import { MaterialModule } from '@app/material.module';
 
+import { AppSidebarComponent } from './components/app-sidebar/app-sidebar.component';
+import { AppTopbarComponent } from './components/app-topbar/app-topbar.component';
+
 @NgModule({
   declarations: [
     AppListComponent,
@@ -22,6 +25,8 @@ import { MaterialModule } from '@app/material.module';
     AppPaginationComponent,
     AppExportComponent,
     AppButtonComponent,
+    AppSidebarComponent,
+    AppTopbarComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +40,8 @@ import { MaterialModule } from '@app/material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-
+    AppSidebarComponent,
+    AppTopbarComponent,
     AppListComponent,
     AppFiltersComponent,
     AppTableComponent,
@@ -44,4 +50,4 @@ import { MaterialModule } from '@app/material.module';
     AppButtonComponent,
   ]
 })
-export class SharedModule {}
+export class SharedModule { }
